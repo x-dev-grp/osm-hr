@@ -2,11 +2,12 @@ package com.osmrh.rh.Dtos;
 
 import com.osmrh.rh.enums.LeaveStatus;
 import com.osmrh.rh.enums.LeaveType;
-
+import com.osmrh.rh.model.Conge;
+import com.xdev.xdevbase.dtos.BaseDto;
 import java.time.LocalDate;
 import java.util.List;
 
-public class CongeDto {
+public class CongeDto  extends BaseDto<Conge>{
     LocalDate dateDebut;
     LocalDate dateFin;
     String raison;
