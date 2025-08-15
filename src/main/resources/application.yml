@@ -1,6 +1,6 @@
 spring:
   application:
-    name: RH
+    name:hrservcie
 
   main:
     banner-mode: console
