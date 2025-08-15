@@ -3,11 +3,13 @@ package com.osmrh.rh.model;
 import com.osmrh.rh.enums.LeaveStatus;
 import com.osmrh.rh.enums.LeaveType;
 import com.xdev.xdevbase.entities.BaseEntity;
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.Table;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.List;
 
 @Entity
 @Table(name = "leave_requests")
@@ -23,10 +25,6 @@ public class LeaveRequest extends BaseEntity implements Serializable {
     @Enumerated(EnumType.STRING)
     private LeaveType leaveType;
 
-    //relation avec conge
-    @ManyToOne
-    @JoinColumn(name = "conge_id")
-    private Conge conge;
 
     public long getDuration_days() {
         return duration_days;
@@ -36,13 +34,7 @@ public class LeaveRequest extends BaseEntity implements Serializable {
         this.duration_days = duration_days;
     }
 
-    public Conge getConge() {
-        return conge;
-    }
 
-    public void setConge(Conge conge) {
-        this.conge = conge;
-    }
 
     // Getters et Setters
     public LeaveType getLeaveType() {

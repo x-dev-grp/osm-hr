@@ -1,6 +1,6 @@
 package com.osmrh.rh.enums;
 
-public enum contract_status {
+public enum ContractStatus {
     ACTIVE,
     EXPIRED,
     SUSPENDED

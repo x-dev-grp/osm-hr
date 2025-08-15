@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/hr/Department")
+@RequestMapping("/api/hr/department")
 public class DepartementController extends BaseControllerImpl<Department, DepartmentDto, DepartmentDto> {
 
 
@@ -19,6 +19,6 @@ public class DepartementController extends BaseControllerImpl<Department, Depart
 
     @Override
     protected String getResourceName() {
-        return "department";
+        return "DEPARTEMENT";
     }
 }

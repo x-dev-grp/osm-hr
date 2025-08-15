@@ -1,6 +1,6 @@
 package com.osmrh.rh.enums;
 
-public enum contractType {
+public enum ContractType {
     INTERNSHIP,
     CDI,
     CDD,

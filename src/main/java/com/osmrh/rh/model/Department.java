@@ -1,7 +1,10 @@
 package com.osmrh.rh.model;
 
 import com.xdev.xdevbase.entities.BaseEntity;
-import jakarta.persistence.*;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 
 import java.io.Serializable;
 import java.util.List;

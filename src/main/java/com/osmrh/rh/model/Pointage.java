@@ -5,6 +5,8 @@ import com.xdev.xdevbase.entities.BaseEntity;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
+import java.sql.Time;
+import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
@@ -16,11 +18,12 @@ public class Pointage extends BaseEntity implements Serializable {
     private LocalTime checkIn;
     private LocalTime checkOut;
 
+    private Time pointageDuree;
+
     @Enumerated(EnumType.STRING)
     private PointageStatus status;
 
-    //relation
-
+    // relation
     @ManyToOne
     @JoinColumn(name = "employee_id")
     private Employee employee;
@@ -40,6 +43,7 @@ public class Pointage extends BaseEntity implements Serializable {
 
     public void setCheckIn(LocalTime checkIn) {
         this.checkIn = checkIn;
+        updateDuration();
     }
 
     public LocalTime getCheckOut() {
@@ -48,6 +52,31 @@ public class Pointage extends BaseEntity implements Serializable {
 
     public void setCheckOut(LocalTime checkOut) {
         this.checkOut = checkOut;
+        updateDuration();
+    }
+
+    public Time getPointageDuree() {
+        return pointageDuree;
+    }
+
+    private void updateDuration() {
+        if (checkIn != null && checkOut != null) {
+            Duration duration = Duration.between(checkIn, checkOut);
+            // Ensure positive duration (checkOut after checkIn)
+            if (!duration.isNegative()) {
+                this.pointageDuree = new Time(duration.toMillis());
+            } else {
+                this.pointageDuree = null;
+            }
+        }
+    }
+
+    public Employee getEmployee() {
+        return employee;
+    }
+
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
     }
 
     public PointageStatus getStatus() {

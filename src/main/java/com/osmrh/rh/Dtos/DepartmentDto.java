@@ -2,6 +2,7 @@ package com.osmrh.rh.Dtos;
 
 
 import com.osmrh.rh.model.Department;
+import com.osmrh.rh.model.Employee;
 import com.xdev.xdevbase.dtos.BaseDto;
 
 import java.util.List;
@@ -11,7 +12,7 @@ public class DepartmentDto extends BaseDto<Department> {
 
     private String name;
     private String description;
-    private Long managerId;
+    private Employee managerId;
     private List<EmployeeDto> employees;
 
     public String getName() {
@@ -30,11 +31,11 @@ public class DepartmentDto extends BaseDto<Department> {
         this.description = description;
     }
 
-    public Long getManagerId() {
+    public Employee getManagerId() {
         return managerId;
     }
 
-    public void setManagerId(Long managerId) {
+    public void setManagerId(Employee managerId) {
         this.managerId = managerId;
     }
 

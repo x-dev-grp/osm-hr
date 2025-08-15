@@ -1,6 +1,9 @@
+server:
+  port: 8086
+
 spring:
   application:
-    name:hrservcie
+    name: hrService
 
   main:
     banner-mode: console
@@ -68,9 +71,6 @@ eureka:
     lease-expiration-duration-in-seconds: 15
 
 
-
-server:
-  port: 8086
 
 logging:
   level:

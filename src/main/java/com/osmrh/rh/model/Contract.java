@@ -1,7 +1,7 @@
 package com.osmrh.rh.model;
 
-import com.osmrh.rh.enums.contractType;
-import com.osmrh.rh.enums.contract_status;
+import com.osmrh.rh.enums.ContractStatus;
+import com.osmrh.rh.enums.ContractType;
 import com.xdev.xdevbase.entities.BaseEntity;
 import jakarta.persistence.*;
 
@@ -14,13 +14,15 @@ public class Contract extends BaseEntity implements Serializable {
     private LocalDate startDate;
     private LocalDate endDate;
     private long salary;
-    private String position;
+    @OneToOne
+    @JoinColumn(name = "position_id")
+    private Poste poste;
 
     @Enumerated(EnumType.STRING)
-    private contractType contractType;
+    private ContractType contractType;
 
     @Enumerated(EnumType.STRING)
-    private contract_status contractStatus;
+    private ContractStatus contractStatus;
 
 
     //relation avec employee
@@ -55,27 +57,27 @@ public class Contract extends BaseEntity implements Serializable {
         this.salary = salary;
     }
 
-    public String getPosition() {
-        return position;
+    public Poste getPoste() {
+        return poste;
     }
 
-    public void setPosition(String position) {
-        this.position = position;
+    public void setPoste(Poste position) {
+        this.poste = position;
     }
 
-    public contractType getContractType() {
+    public ContractType getContractType() {
         return contractType;
     }
 
-    public void setContractType(contractType contractType) {
+    public void setContractType(ContractType contractType) {
         this.contractType = contractType;
     }
 
-    public contract_status getContractStatus() {
+    public ContractStatus getContractStatus() {
         return contractStatus;
     }
 
-    public void setContractStatus(contract_status contractStatus) {
+    public void setContractStatus(ContractStatus contractStatus) {
         this.contractStatus = contractStatus;
     }
 

@@ -1,7 +1,7 @@
 package com.osmrh.rh.Dtos;
 
-import com.osmrh.rh.enums.contractType;
-import com.osmrh.rh.enums.contract_status;
+import com.osmrh.rh.enums.ContractStatus;
+import com.osmrh.rh.enums.ContractType;
 import com.osmrh.rh.model.Contract;
 import com.osmrh.rh.model.Employee;
 import com.xdev.xdevbase.dtos.BaseDto;
@@ -15,8 +15,8 @@ public class ContractDto extends BaseDto<Contract> {
     private LocalDate startDate;
     private LocalDate endDate;
     private long salary;
-    private String position;
-    private contract_status contractStatus;
+    private PosteDto poste;
+    private ContractStatus contractStatus;
 
 
     //geter and Seter
@@ -44,12 +44,11 @@ public class ContractDto extends BaseDto<Contract> {
         this.endDate = endDate;
     }
 
-    public contractType getContractType() {
-        return contractType;
-    }
+    @Enumerated(EnumType.STRING)
+    private ContractType contractType;
 
-    public void setContractType(contractType contractType) {
-        this.contractType = contractType;
+    public ContractType getContractType() {
+        return contractType;
     }
 
     public long getSalary() {
@@ -60,23 +59,24 @@ public class ContractDto extends BaseDto<Contract> {
         this.salary = salary;
     }
 
-    public String getPosition() {
-        return position;
+    public void setContractType(ContractType contractType) {
+        this.contractType = contractType;
     }
 
-    public void setPosition(String position) {
-        this.position = position;
+    public PosteDto getPoste() {
+        return poste;
     }
 
-    public contract_status getContractStatus() {
+    public void setPoste(PosteDto poste) {
+        this.poste = poste;
+    }
+
+    public ContractStatus getContractStatus() {
         return contractStatus;
     }
 
-    public void setContractStatus(contract_status contractStatus) {
+    public void setContractStatus(ContractStatus contractStatus) {
         this.contractStatus = contractStatus;
     }
-
-    @Enumerated(EnumType.STRING)
-    private contractType contractType;
 }
 

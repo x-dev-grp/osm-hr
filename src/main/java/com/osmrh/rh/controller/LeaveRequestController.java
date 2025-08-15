@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/hr/LeaveRequest")
+@RequestMapping("/api/hr/leaverequest")
 public class LeaveRequestController extends BaseControllerImpl<LeaveRequest, LeaveRequestDto, LeaveRequestDto> {
 
 
@@ -19,6 +19,6 @@ public class LeaveRequestController extends BaseControllerImpl<LeaveRequest, Lea
 
     @Override
     protected String getResourceName() {
-        return "LeaveRequest";
+        return "LEAVEREQUEST";
     }
 }

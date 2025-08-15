@@ -13,11 +13,8 @@ public class PointageDto extends BaseDto<Pointage> {
     private LocalDate date;
     private LocalTime checkIn;
     private LocalTime checkOut;
-
     @Enumerated(EnumType.STRING)
     private PointageStatus status;
-
-
     public LocalDate getDate() {
         return date;
     }
