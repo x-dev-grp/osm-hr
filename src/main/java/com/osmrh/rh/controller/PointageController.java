@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/RH/Pointage")
+@RequestMapping("/api/hr/Pointage")
 public class PointageController extends BaseControllerImpl<Pointage, PointageDto, PointageDto> {
 
 

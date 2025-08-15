@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/RH/LeaveRequest")
+@RequestMapping("/api/hr/LeaveRequest")
 public class LeaveRequestController extends BaseControllerImpl<LeaveRequest, LeaveRequestDto, LeaveRequestDto> {
 
 

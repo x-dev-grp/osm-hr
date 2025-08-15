@@ -1,6 +1,6 @@
 package com.osmrh.rh.controller;
 
-import com.osmrh.rh.Dtos.contractDto;
+import com.osmrh.rh.Dtos.ContractDto;
 import com.osmrh.rh.model.Contract;
 import com.xdev.xdevbase.controllers.impl.BaseControllerImpl;
 import com.xdev.xdevbase.services.BaseService;
@@ -9,11 +9,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/RH/Contrtract")
-public class ContractController extends BaseControllerImpl<Contract, contractDto, contractDto> {
+@RequestMapping("/api/hr/Contrtract")
+public class ContractController extends BaseControllerImpl<Contract, ContractDto, ContractDto> {
 
 
-    public ContractController(BaseService<Contract, contractDto, contractDto> baseService, ModelMapper modelMapper) {
+    public ContractController(BaseService<Contract, ContractDto, ContractDto> baseService, ModelMapper modelMapper) {
         super(baseService, modelMapper);
     }
 

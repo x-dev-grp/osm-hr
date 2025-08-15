@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/RH/PayRolls")
+@RequestMapping("/api/hr/PayRolls")
 public class PayRollsController extends BaseControllerImpl<PayRolls, PayRollsDto, PayRollsDto> {
 
 

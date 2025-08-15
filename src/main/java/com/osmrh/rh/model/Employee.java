@@ -15,7 +15,7 @@ public class Employee extends BaseEntity implements Serializable {
     private String firstName;
     private String lastName;
     private LocalDate hire_date;
-    private LocalDate birth_date;
+    private LocalDate birthDate;
     private LocalDate  termination_date;
     private String cin;
     private String email;
@@ -37,11 +37,11 @@ public class Employee extends BaseEntity implements Serializable {
     }
 
     public LocalDate getBirth_date() {
-        return birth_date;
+        return birthDate;
     }
 
     public void setBirth_date(LocalDate birth_date) {
-        this.birth_date = birth_date;
+        this.birthDate = birth_date;
     }
 
     public LocalDate getTermination_date() {
