@@ -1,10 +1,12 @@
 package com.osmrh.rh.Dtos;
 
 import com.osmrh.rh.enums.Gender;
+import com.osmrh.rh.enums.MaritalStatus;
 import com.osmrh.rh.model.Employee;
 import com.xdev.xdevbase.dtos.BaseDto;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public class EmployeeDto extends BaseDto<Employee> {
     private String firstName;
@@ -14,13 +16,19 @@ public class EmployeeDto extends BaseDto<Employee> {
     private String cin;
     private String email;
     private String phone;
-    private String position;
     private String address;
     private String city;
     private String country;
-    private Double salary;
+    private LocalDate hireDate;
+    private String postalCode;
+    private boolean isActive;
+    private MaritalStatus maritalStatus;
+    private List<ContractDto> contrats;
+    private DepartmentDto department;
+    private List<PayRollsDto> payrolls;
+    private List<PointageDto> pointages;
 
-  //geter and seter
+    //geter and seter
 
     public String getFirstName() {
         return firstName;
@@ -78,14 +86,6 @@ public class EmployeeDto extends BaseDto<Employee> {
         this.phone = phone;
     }
 
-    public String getPosition() {
-        return position;
-    }
-
-    public void setPosition(String position) {
-        this.position = position;
-    }
-
     public String getAddress() {
         return address;
     }
@@ -110,13 +110,71 @@ public class EmployeeDto extends BaseDto<Employee> {
         this.country = country;
     }
 
-    public Double getSalary() {
-        return salary;
+
+    public LocalDate getHireDate() {
+        return hireDate;
     }
 
-    public void setSalary(Double salary) {
-        this.salary = salary;
+    public void setHireDate(LocalDate hireDate) {
+        this.hireDate = hireDate;
     }
+
+    public String getPostalCode() {
+        return postalCode;
+    }
+
+    public void setPostalCode(String postalCode) {
+        this.postalCode = postalCode;
+    }
+
+    public boolean isActive() {
+        return isActive;
+    }
+
+    public void setActive(boolean active) {
+        isActive = active;
+    }
+
+    public MaritalStatus getMaritalStatus() {
+        return maritalStatus;
+    }
+
+    public void setMaritalStatus(MaritalStatus maritalStatus) {
+        this.maritalStatus = maritalStatus;
+    }
+
+    public List<ContractDto> getContrats() {
+        return contrats;
+    }
+
+    public void setContrats(List<ContractDto> contrats) {
+        this.contrats = contrats;
+    }
+
+    public DepartmentDto getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(DepartmentDto department) {
+        this.department = department;
+    }
+
+    public List<PayRollsDto> getPayrolls() {
+        return payrolls;
+    }
+
+    public void setPayrolls(List<PayRollsDto> payrolls) {
+        this.payrolls = payrolls;
+    }
+
+    public List<PointageDto> getPointages() {
+        return pointages;
+    }
+
+    public void setPointages(List<PointageDto> pointages) {
+        this.pointages = pointages;
+    }
+
 }
 
 

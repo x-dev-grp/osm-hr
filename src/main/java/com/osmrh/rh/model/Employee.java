@@ -15,24 +15,46 @@ public class Employee extends BaseEntity implements Serializable {
 
     private String firstName;
     private String lastName;
-    private LocalDate hire_date;
+    private LocalDate hireDate;
     private LocalDate birthDate;
     private String cin;
     private String email;
     private String phone;
     private String address;
-    private String postal_code;
+    private String postalCode;
     private String city;
     private String country;
-    private boolean is_active;
+    private boolean active;
+
+
     @Enumerated(EnumType.STRING)
     private Gender gender;
+
     @Enumerated(EnumType.STRING)
     private MaritalStatus maritalStatus;
+
+
+
     //relation avec contrat
+
     @OneToMany(mappedBy = "employee")
     private List<Contract> contrats;
+    // Relation avec Department
 
+    @ManyToOne
+    @JoinColumn(name = "department_id")
+    private Department department;
+    // Relation avec Payroll
+
+    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL)
+    private List<PayRolls> payrolls;
+    // Relation avec Pointage
+
+    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL)
+    private List<Pointage> pointages;
+
+
+    //geter et seter
     public List<Contract> getContrats() {
         return contrats;
     }
@@ -51,14 +73,6 @@ public class Employee extends BaseEntity implements Serializable {
 
     public String getLastName() {
         return lastName;
-    }
-
-    public LocalDate getHire_date() {
-        return hire_date;
-    }
-
-    public void setHire_date(LocalDate hire_date) {
-        this.hire_date = hire_date;
     }
 
     public void setLastName(String lastName) {
@@ -101,13 +115,6 @@ public class Employee extends BaseEntity implements Serializable {
         return address;
     }
 
-    public String getPostal_code() {
-        return postal_code;
-    }
-
-    public void setPostal_code(String postal_code) {
-        this.postal_code = postal_code;
-    }
 
     public void setAddress(String address) {
         this.address = address;
@@ -123,14 +130,6 @@ public class Employee extends BaseEntity implements Serializable {
 
     public String getCountry() {
         return country;
-    }
-
-    public boolean isIs_active() {
-        return is_active;
-    }
-
-    public void setIs_active(boolean is_active) {
-        this.is_active = is_active;
     }
 
     public void setCountry(String country) {
@@ -176,16 +175,29 @@ public class Employee extends BaseEntity implements Serializable {
     public void setMaritalStatus(MaritalStatus maritalStatus) {
         this.maritalStatus = maritalStatus;
     }
-    // Relation avec Department
-    @ManyToOne
-    @JoinColumn(name = "department_id")
-    private Department department;
-    // Relation avec Payroll
-    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL)
-    private List<PayRolls> payrolls;
-    // Relation avec Pointage
-    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL)
-    private List<Pointage> pointages;
+
+    public LocalDate getHireDate() {
+        return hireDate;
+    }
+
+    public void setHireDate(LocalDate hireDate) {
+        this.hireDate = hireDate;
+    }
+
+    public String getPostalCode() {
+        return postalCode;
+    }
+
+    public void setPostalCode(String postalCode) {
+        this.postalCode = postalCode;
+    }
 
 
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
 }
