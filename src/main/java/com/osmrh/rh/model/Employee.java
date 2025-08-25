@@ -24,7 +24,7 @@ public class Employee extends BaseEntity implements Serializable {
     private String postalCode;
     private String city;
     private String country;
-    private boolean active;
+    private boolean active=false;
 
 
     @Enumerated(EnumType.STRING)
