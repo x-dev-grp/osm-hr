@@ -1,10 +1,10 @@
 package com.osmrh.rh.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.xdev.xdevbase.entities.BaseEntity;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.io.Serializable;
 import java.util.List;
@@ -14,11 +14,19 @@ import java.util.List;
 public class Department extends BaseEntity implements Serializable {
     private String name;
     private String description;
-    private Long managerId;
 
-    @OneToMany(mappedBy = "department", cascade = CascadeType.ALL)
+    //relation avec employee
+    @OneToOne
+    @JoinColumn(name = "manager_id", nullable = true)
+    @JsonIgnoreProperties({"department", "managedDepartment", "contrats", "payrolls", "pointages"})
+    private Employee manager;
+    @OneToMany(mappedBy = "department",  cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JsonManagedReference
     private List<Employee> employees;
 
+
+
+    // Getters et Setters
     public List<Employee> getEmployees() {
         return employees;
     }
@@ -27,7 +35,6 @@ public class Department extends BaseEntity implements Serializable {
         this.employees = employees;
     }
 
-    // Getters et Setters
     public String getName() {
         return name;
     }
@@ -44,12 +51,13 @@ public class Department extends BaseEntity implements Serializable {
         this.description = description;
     }
 
-    public Long getManagerId() {
-        return managerId;
+    public Employee getManager() {
+        return manager;
     }
 
-    public void setManagerId(Long managerId) {
-        this.managerId = managerId;
+    public void setManager(Employee managerId) {
+        this.manager = managerId;
     }
+
 }
 

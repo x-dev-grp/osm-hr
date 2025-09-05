@@ -1,5 +1,6 @@
 package com.osmrh.rh.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.osmrh.rh.enums.ContractStatus;
 import com.osmrh.rh.enums.ContractType;
 import com.xdev.xdevbase.entities.BaseEntity;
@@ -14,8 +15,8 @@ public class Contract extends BaseEntity implements Serializable {
     private LocalDate startDate;
     private LocalDate endDate;
     private long salary;
-    @OneToOne
-    @JoinColumn(name = "position_id")
+    @ManyToOne
+    @JoinColumn(name = "poste_id")
     private Poste poste;
 
     @Enumerated(EnumType.STRING)
@@ -28,6 +29,7 @@ public class Contract extends BaseEntity implements Serializable {
     //relation avec employee
     @ManyToOne
     @JoinColumn(name = "employee_id")
+    @JsonBackReference
     private Employee employee;
 
 

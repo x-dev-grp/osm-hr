@@ -1,6 +1,7 @@
 package com.osmrh.rh.Dtos;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.osmrh.rh.model.Department;
 import com.osmrh.rh.model.Employee;
 import com.xdev.xdevbase.dtos.BaseDto;
@@ -12,8 +13,24 @@ public class DepartmentDto extends BaseDto<Department> {
 
     private String name;
     private String description;
-    private Employee managerId;
+
+
+    @JsonIgnoreProperties({"department", "contrats", "payrolls", "pointages"})
     private List<EmployeeDto> employees;
+
+    @JsonIgnoreProperties({"department", "contrats", "payrolls", "pointages"})
+    private EmployeeDto manager;
+
+
+
+    //geter and seter
+    public EmployeeDto getManager() {
+        return manager;
+    }
+
+    public void setManager(EmployeeDto manager) {
+        this.manager = manager;
+    }
 
     public String getName() {
         return name;
@@ -31,13 +48,6 @@ public class DepartmentDto extends BaseDto<Department> {
         this.description = description;
     }
 
-    public Employee getManagerId() {
-        return managerId;
-    }
-
-    public void setManagerId(Employee managerId) {
-        this.managerId = managerId;
-    }
 
     public List<EmployeeDto> getEmployees() {
         return employees;
@@ -46,4 +56,6 @@ public class DepartmentDto extends BaseDto<Department> {
     public void setEmployees(List<EmployeeDto> employees) {
         this.employees = employees;
     }
+
+
 }

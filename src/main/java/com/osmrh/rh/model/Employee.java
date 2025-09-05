@@ -1,5 +1,7 @@
 package com.osmrh.rh.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.osmrh.rh.enums.Gender;
 import com.osmrh.rh.enums.MaritalStatus;
 import com.xdev.xdevbase.entities.BaseEntity;
@@ -36,16 +38,21 @@ public class Employee extends BaseEntity implements Serializable {
 
 
     //relation avec contrat
-
-    @OneToMany(mappedBy = "employee")
+    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
     private List<Contract> contrats;
+
     // Relation avec Department
+ //  @OneToOne(mappedBy = "manager")
+   //@JsonBackReference
+    //private Department managedDepartment;
 
     @ManyToOne
     @JoinColumn(name = "department_id")
+    @JsonBackReference
     private Department department;
-    // Relation avec Payroll
 
+    // Relation avec Payroll
     @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL)
     private List<PayRolls> payrolls;
     // Relation avec Pointage
