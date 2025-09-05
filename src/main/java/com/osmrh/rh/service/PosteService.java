@@ -1,8 +1,9 @@
 package com.osmrh.rh.service;
 
 import com.osmrh.rh.Dtos.DepartmentDto;
+import com.osmrh.rh.Dtos.PosteDto;
 import com.osmrh.rh.model.Department;
-import com.osmrh.rh.model.Employee;
+import com.osmrh.rh.model.Poste;
 import com.xdev.xdevbase.models.Action;
 import com.xdev.xdevbase.repos.BaseRepository;
 import com.xdev.xdevbase.services.impl.BaseServiceImpl;
@@ -14,22 +15,20 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Service
-public class departementService extends BaseServiceImpl<Department, DepartmentDto, DepartmentDto> {
+public class PosteService extends BaseServiceImpl<Poste, PosteDto, PosteDto> {
 
-    public departementService(BaseRepository<Department> repository, ModelMapper modelMapper) {
+    public PosteService(BaseRepository<Poste> repository, ModelMapper modelMapper) {
         super(repository, modelMapper);
 
 
     }
     @Override
-    public Set<Action> actionsMapping(Department Department) {
+    public Set<Action> actionsMapping(Poste Poste) {
         long startTime = System.currentTimeMillis();
-        OSMLogger.logMethodEntry(this.getClass(), "actionsMapping", Department);
+        OSMLogger.logMethodEntry(this.getClass(), "actionsMapping",Poste);
         Set<Action> actions = new HashSet<>();
-        actions.add(Action.READ);
         actions.add(Action.UPDATE);
         actions.add(Action.DELETE);
-        actions.add(Action.PAY);
         OSMLogger.logMethodExit(this.getClass(), "actionsMapping", actions);
         OSMLogger.logPerformance(this.getClass(), "actionsMapping", startTime, System.currentTimeMillis());
         return actions;

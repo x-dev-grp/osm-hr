@@ -28,7 +28,6 @@ public class EmployeeService extends BaseServiceImpl<Employee, EmployeeDto, Empl
         actions.add(Action.READ);
         actions.add(Action.UPDATE);
         actions.add(Action.DELETE);
-        actions.add(Action.PAY);
         OSMLogger.logMethodExit(this.getClass(), "actionsMapping", actions);
         OSMLogger.logPerformance(this.getClass(), "actionsMapping", startTime, System.currentTimeMillis());
         return actions;

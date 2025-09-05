@@ -1,5 +1,6 @@
 package com.osmrh.rh.Dtos;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.osmrh.rh.enums.Gender;
 import com.osmrh.rh.enums.MaritalStatus;
 import com.osmrh.rh.model.Employee;
@@ -21,11 +22,20 @@ public class EmployeeDto extends BaseDto<Employee> {
     private String country;
     private LocalDate hireDate;
     private String postalCode;
-    private boolean isActive;
+    private boolean active;
     private MaritalStatus maritalStatus;
+
+    @JsonIgnoreProperties({"employee"})
     private List<ContractDto> contrats;
+
+    @JsonIgnoreProperties({"employees","manager"})
     private DepartmentDto department;
+
+    @JsonIgnoreProperties({"employee"})
     private List<PayRollsDto> payrolls;
+
+
+    @JsonIgnoreProperties({"employee"})
     private List<PointageDto> pointages;
 
     //geter and seter
@@ -127,13 +137,6 @@ public class EmployeeDto extends BaseDto<Employee> {
         this.postalCode = postalCode;
     }
 
-    public boolean isActive() {
-        return isActive;
-    }
-
-    public void setActive(boolean active) {
-        isActive = active;
-    }
 
     public MaritalStatus getMaritalStatus() {
         return maritalStatus;
@@ -173,6 +176,14 @@ public class EmployeeDto extends BaseDto<Employee> {
 
     public void setPointages(List<PointageDto> pointages) {
         this.pointages = pointages;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
     }
 
 }
