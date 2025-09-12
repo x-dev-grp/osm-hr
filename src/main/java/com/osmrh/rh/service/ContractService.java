@@ -49,7 +49,6 @@ public class ContractService extends BaseServiceImpl<Contract, ContractDto, Cont
         Contract contract = modelMapper.map(contractDto, Contract.class);
 
         // Set the bidirectional relationship
-        contract.setEmployee(employee);
 
         // Add the contract to the employee's contract list
         employee.getContrats().add(contract);
@@ -73,9 +72,7 @@ public class ContractService extends BaseServiceImpl<Contract, ContractDto, Cont
     public ContractDto updateEmployeeContract(UUID employeeId, UUID contractId, ContractDto contractDto) {
         var contract = repository.findById(contractId)
                 .orElseThrow(() -> new RuntimeException("Contract not found"));
-        if (!contract.getEmployee().getId().equals(employeeId)) {
-            throw new RuntimeException("Contract does not belong to this employee");
-        }
+
         modelMapper.map(contractDto, contract);
         Contract updatedContract = repository.save(contract);
         return modelMapper.map(updatedContract, ContractDto.class);
@@ -88,11 +85,6 @@ public class ContractService extends BaseServiceImpl<Contract, ContractDto, Cont
     public void deleteEmployeeContract(UUID employeeId, UUID contractId) {
         var contract = repository.findById(contractId)
                 .orElseThrow(() -> new RuntimeException("Contract not found"));
-
-        // Vérifier que le contrat appartient à l'employé
-        if (!contract.getEmployee().getId().equals(employeeId)) {
-            throw new RuntimeException("Contract does not belong to this employee");
-        }
 
         // Supprimer le contrat
         repository.delete(contract);

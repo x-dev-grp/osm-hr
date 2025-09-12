@@ -47,10 +47,7 @@ public class Employee extends BaseEntity implements Serializable {
    //@JsonBackReference
     //private Department managedDepartment;
 
-    @ManyToOne
-    @JoinColumn(name = "department_id")
-    @JsonBackReference
-    private Department department;
+
 
     // Relation avec Payroll
     @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL)
@@ -207,4 +204,40 @@ public class Employee extends BaseEntity implements Serializable {
     public void setActive(boolean active) {
         this.active = active;
     }
+    // --- Relations ---
+
+    // Employee belongs to a single Department
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "department_id", nullable = false)
+    @JsonBackReference("department-employees")
+    private Department department;
+
+    // Employee has many Contracts
+    @OneToMany(
+            mappedBy = "employee",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+    )
+    @JsonManagedReference("employee-contracts")
+    private List<Contract> contracts = new java.util.ArrayList<>();
+
+    // --- Helpers to keep both sides in sync ---
+    public void addContract(Contract c) {
+        if (c == null) return;
+        contracts.add(c);
+        c.setEmployee(this);
+    }
+
+    public void removeContract(Contract c) {
+        if (c == null) return;
+        contracts.remove(c);
+        if (c.getEmployee() == this) c.setEmployee(null);
+    }
+
+
+    public List<Contract> getContracts() { return contracts; }
+    public void setContracts(List<Contract> contracts) {
+        this.contracts = (contracts != null) ? contracts : new java.util.ArrayList<>();
+    }
+
 }

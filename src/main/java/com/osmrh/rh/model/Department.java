@@ -14,25 +14,14 @@ import java.util.List;
 public class Department extends BaseEntity implements Serializable {
     private String name;
     private String description;
+    // Department has many Employees
+    @OneToMany(mappedBy = "department")
+    @JsonManagedReference("department-employees")
+    private List<Employee> employees = new java.util.ArrayList<>();
 
-    //relation avec employee
-    @OneToOne
-    @JoinColumn(name = "manager_id", nullable = true)
-    @JsonIgnoreProperties({"department", "managedDepartment", "contrats", "payrolls", "pointages"})
-    private Employee manager;
-    @OneToMany(mappedBy = "department",  cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    @JsonManagedReference
-    private List<Employee> employees;
-
-
-
-    // Getters et Setters
-    public List<Employee> getEmployees() {
-        return employees;
-    }
-
+    public List<Employee> getEmployees() { return employees; }
     public void setEmployees(List<Employee> employees) {
-        this.employees = employees;
+        this.employees = (employees != null) ? employees : new java.util.ArrayList<>();
     }
 
     public String getName() {
@@ -51,13 +40,6 @@ public class Department extends BaseEntity implements Serializable {
         this.description = description;
     }
 
-    public Employee getManager() {
-        return manager;
-    }
-
-    public void setManager(Employee managerId) {
-        this.manager = managerId;
-    }
 
 }
 

@@ -15,9 +15,7 @@ public class Contract extends BaseEntity implements Serializable {
     private LocalDate startDate;
     private LocalDate endDate;
     private long salary;
-    @ManyToOne
-    @JoinColumn(name = "poste_id")
-    private Poste poste;
+
 
     @Enumerated(EnumType.STRING)
     private ContractType contractType;
@@ -26,11 +24,7 @@ public class Contract extends BaseEntity implements Serializable {
     private ContractStatus contractStatus;
 
 
-    //relation avec employee
-    @ManyToOne
-    @JoinColumn(name = "employee_id")
-    @JsonBackReference
-    private Employee employee;
+
 
 
     // Getters et Setters
@@ -83,6 +77,18 @@ public class Contract extends BaseEntity implements Serializable {
         this.contractStatus = contractStatus;
     }
 
+    // Many contracts for one employee
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "employee_id", nullable = false)
+    @JsonBackReference("employee-contracts")
+    private Employee employee;
+
+    // Each contract has exactly one Poste (job/position)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "poste_id", nullable = false)
+    private Poste poste;
+
+    // --- Getters/Setters ---
     public Employee getEmployee() {
         return employee;
     }
@@ -90,5 +96,6 @@ public class Contract extends BaseEntity implements Serializable {
     public void setEmployee(Employee employee) {
         this.employee = employee;
     }
+
 }
 

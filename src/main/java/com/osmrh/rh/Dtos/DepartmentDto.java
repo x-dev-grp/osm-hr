@@ -15,22 +15,22 @@ public class DepartmentDto extends BaseDto<Department> {
     private String description;
 
 
-    @JsonIgnoreProperties({"department", "contrats", "payrolls", "pointages"})
-    private List<EmployeeDto> employees;
+//    @JsonIgnoreProperties({"department", "contrats", "payrolls", "pointages"})
+//    private List<EmployeeDto> employees;
 
-    @JsonIgnoreProperties({"department", "contrats", "payrolls", "pointages"})
-    private EmployeeDto manager;
+//    @JsonIgnoreProperties({"department", "contrats", "payrolls", "pointages"})
+//    private EmployeeDto manager;
 
 
 
     //geter and seter
-    public EmployeeDto getManager() {
-        return manager;
-    }
-
-    public void setManager(EmployeeDto manager) {
-        this.manager = manager;
-    }
+//    public EmployeeDto getManager() {
+//        return manager;
+//    }
+//
+//    public void setManager(EmployeeDto manager) {
+//        this.manager = manager;
+//    }
 
     public String getName() {
         return name;
@@ -49,13 +49,13 @@ public class DepartmentDto extends BaseDto<Department> {
     }
 
 
-    public List<EmployeeDto> getEmployees() {
-        return employees;
-    }
+//    public List<EmployeeDto> getEmployees() {
+//        return employees;
+//    }
 
-    public void setEmployees(List<EmployeeDto> employees) {
-        this.employees = employees;
-    }
+//    public void setEmployees(List<EmployeeDto> employees) {
+//        this.employees = employees;
+//    }
 
 
 }

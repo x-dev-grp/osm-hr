@@ -24,18 +24,13 @@ public class EmployeeDto extends BaseDto<Employee> {
     private String postalCode;
     private boolean active;
     private MaritalStatus maritalStatus;
-
-    @JsonIgnoreProperties({"employee"})
     private List<ContractDto> contrats;
 
-    @JsonIgnoreProperties({"employees","manager"})
     private DepartmentDto department;
 
-    @JsonIgnoreProperties({"employee"})
     private List<PayRollsDto> payrolls;
 
 
-    @JsonIgnoreProperties({"employee"})
     private List<PointageDto> pointages;
 
     //geter and seter

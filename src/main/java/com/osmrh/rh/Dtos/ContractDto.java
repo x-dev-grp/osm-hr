@@ -11,22 +11,13 @@ import jakarta.persistence.Enumerated;
 import java.time.LocalDate;
 
 public class ContractDto extends BaseDto<Contract> {
-    private Employee employee;
-    private LocalDate startDate;
+     private LocalDate startDate;
     private LocalDate endDate;
     private long salary;
     private PosteDto poste;
     private ContractStatus contractStatus;
 
 
-    //geter and Seter
-    public Employee getEmployee() {
-        return employee;
-    }
-
-    public void setEmployee(Employee employee) {
-        this.employee = employee;
-    }
 
     public LocalDate getStartDate() {
         return startDate;
