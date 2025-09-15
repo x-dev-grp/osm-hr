@@ -126,3 +126,10 @@ resilience4j:
           docker:
             compose:
               enabled: false
+management:
+  endpoint:
+    web:
+      exposure:
+        include:*
+    health:
+      show-details: always
