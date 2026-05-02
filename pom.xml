@@ -11,10 +11,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
-    <groupId>com.osm-hr</groupId>
-    <artifactId>hrService</artifactId>
+    <groupId>com.osm</groupId>
+    <artifactId>hr-service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>hrservice</name>
+    <name>hr-service</name>
     <description>hr</description>
      <url/>
     <licenses>

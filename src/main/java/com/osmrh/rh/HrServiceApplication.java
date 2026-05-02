@@ -12,10 +12,10 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @ComponentScan(basePackages = {"com.xdev", "com.xdev.xdevsecurity","com.xdev.xdevbase","com.xdev.communicator", "com.osmrh.rh"})
 @EnableJpaRepositories(basePackages = {"com.xdev", "com.xdev.xdevbase", "com.osmrh.rh"}, repositoryFactoryBeanClass = EnversRevisionRepositoryFactoryBean.class)
 
-public class RhApplication {
+public class HrServiceApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(RhApplication.class, args);
+        SpringApplication.run(HrServiceApplication.class, args);
     }
 
 }
