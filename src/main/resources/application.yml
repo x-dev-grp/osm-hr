@@ -2,6 +2,9 @@ server:
   address: 0.0.0.0
   port: 8086
   max-http-request-header-size: 32KB      # Boot 3.x+
+  error:
+    include-message: always
+    include-binding-errors: always
 
 spring:
   application:
